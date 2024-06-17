@@ -1,6 +1,6 @@
 
 class Solution {
-    // TC;O(NlogN) SC:O(1)
+    // TC;O(NlogN) SC:O(1) //Greedy
     public int minIncrementForUnique(int[] nums) {
         Arrays.sort(nums);
         int cnt = nums[0];
