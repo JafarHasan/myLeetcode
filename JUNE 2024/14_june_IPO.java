@@ -7,7 +7,7 @@ class Solution {
      * ans=45 10+20+15
      */
     // TC:O(N)*O(logN)->TC:O(NlogN) SC:O(N*2)for 2d array +O(N) for heap->O(N)
-    //Greedy    Sorting     maxHeap
+    // Greedy Sorting maxHeap
     public int findMaximizedCapital(int k, int w, int[] profits, int[] capital) {
         // Arrays.sort(capital); //if we sort we cant find corresponding profit, so we
         // cant sort
