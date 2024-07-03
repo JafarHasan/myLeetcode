@@ -1,3 +1,4 @@
+import java.util.*;
 class Solution {
     public int maxNumEdgesToRemove(int n, int[][] edges) {
         // sort the array based on 0th idx desc order to get type 3 edges first
