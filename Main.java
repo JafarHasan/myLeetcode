@@ -131,29 +131,86 @@
 /**
  * InnerTest1
  */
-interface Student{
+// interface Student{
 
-    int x=10;
-    void showName();
-    
-}
-class S1 implements Student{
-    public void showName(){
-        System.out.println("My name is S1");
-    }
-    public void showName2(){
-        System.out.println("My name is s1 show2");
-    }
-}
+//     int x=10;
+//     void showName();
+
+// }
+// class S1 implements Student{
+//     public void showName(){
+//         System.out.println("My name is S1");
+//     }
+//     public void showName2(){
+//         System.out.println("My name is s1 show2");
+//     }
+// }
 // class S2 implements Student{//error must implemenet showName()
 //     public void showName2(){
 //         System.out.println("My name is S2");
 //     }
 // }
-class Test1 {
-    public static void main(String[] args) {
-       Student S;
-       S=new S1();
-       S.showName();
+// class Test1 {
+//     public static void main(String[] args) {
+//        Student S;
+//        S=new S1();
+//        S.showName();
+//     }
+// }
+
+import java.util.*;
+
+public class Main {
+
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    char[][] board = new char[9][9];
+    for (int i = 0; i < 9; i++) {
+      for (int j = 0; j < 9; j++) {
+        board[i][j] = sc.next().charAt(0);
+      }
     }
+    sc.close();
+    if (isValidSudoku(board)) {
+      System.out.println("correct");
+    } else {
+      System.out.println("incorrect");
+    }
+  }
+
+  public static boolean isValidSudoku(char[][] board) {
+    // your code
+
+    // checking for each row
+    int col = 0;
+    while (col <= 9) {
+      int idx = 1;
+      int[] arr = new int[10];
+      for (int i = 0; i < 9; i++) {
+        if (board[i][col] != '.') {
+          if (arr[board[i][col] - '0'] != 0) {
+            return false;
+          }
+          arr[idx++] = board[i][col] - '0';
+        }
+        col++;
+      }
+    }
+    int row = 0;
+    while (row <= 9) {
+      int idx = 1;
+      int[] arr = new int[10];
+      for (int i = 0; i < 9; i++) {
+        if (board[i][col] != '.') {
+          if (arr[board[row][i] - '0'] != 0) {
+            return false;
+          }
+          arr[idx++] = board[i][col] - '0';
+        }
+        row++;
+      }
+    }
+    return true;
+
+  }
 }
