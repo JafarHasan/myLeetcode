@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.PriorityQueue;
 
 class Solution {
-    // TC:(ElogV) SC:O(N) E=no of edges V=no of Vertices
+    // TC:(ElogV) SC:O(V+E) E=no of edges V=no of Vertices
     // to go node to node itself probablity=100% i e =1
     class Pair implements Comparable<Pair> {
         int dest;
