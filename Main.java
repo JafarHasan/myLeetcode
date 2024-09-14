@@ -160,57 +160,82 @@
 
 import java.util.*;
 
+// public class Main {
+
+//   public static void main(String[] args) {
+//     Scanner sc = new Scanner(System.in);
+//     char[][] board = new char[9][9];
+//     for (int i = 0; i < 9; i++) {
+//       for (int j = 0; j < 9; j++) {
+//         board[i][j] = sc.next().charAt(0);
+//       }
+//     }
+//     sc.close();
+//     if (isValidSudoku(board)) {
+//       System.out.println("correct");
+//     } else {
+//       System.out.println("incorrect");
+//     }
+//   }
+
+//   public static boolean isValidSudoku(char[][] board) {
+//     // your code
+
+//     // checking for each row
+//     int col = 0;
+//     while (col <= 9) {
+//       int idx = 1;
+//       int[] arr = new int[10];
+//       for (int i = 0; i < 9; i++) {
+//         if (board[i][col] != '.') {
+//           if (arr[board[i][col] - '0'] != 0) {
+//             return false;
+//           }
+//           arr[idx++] = board[i][col] - '0';
+//         }
+//         col++;
+//       }
+//     }
+//     int row = 0;
+//     while (row <= 9) {
+//       int idx = 1;
+//       int[] arr = new int[10];
+//       for (int i = 0; i < 9; i++) {
+//         if (board[i][col] != '.') {
+//           if (arr[board[row][i] - '0'] != 0) {
+//             return false;
+//           }
+//           arr[idx++] = board[i][col] - '0';
+//         }
+//         row++;
+//       }
+//     }
+//     return true;
+
+//   }
+// }
+class Calculator{
+  public static int add(int a,int b){
+    return a+b;
+  }
+  public static float add(int a,float b){
+    return a+b;
+  }
+  public static int add(int a,int b,int c){
+    return a+b+c;
+  }
+
+}
+
 public class Main {
 
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
-    char[][] board = new char[9][9];
-    for (int i = 0; i < 9; i++) {
-      for (int j = 0; j < 9; j++) {
-        board[i][j] = sc.next().charAt(0);
-      }
-    }
-    sc.close();
-    if (isValidSudoku(board)) {
-      System.out.println("correct");
-    } else {
-      System.out.println("incorrect");
-    }
-  }
+    System.out.println(Calculator.add(12, 13));
+    System.out.println(Calculator.add(12, 13.6f));
+    System.out.println(Calculator.add(12, 13,20));
 
-  public static boolean isValidSudoku(char[][] board) {
-    // your code
-
-    // checking for each row
-    int col = 0;
-    while (col <= 9) {
-      int idx = 1;
-      int[] arr = new int[10];
-      for (int i = 0; i < 9; i++) {
-        if (board[i][col] != '.') {
-          if (arr[board[i][col] - '0'] != 0) {
-            return false;
-          }
-          arr[idx++] = board[i][col] - '0';
-        }
-        col++;
-      }
-    }
-    int row = 0;
-    while (row <= 9) {
-      int idx = 1;
-      int[] arr = new int[10];
-      for (int i = 0; i < 9; i++) {
-        if (board[i][col] != '.') {
-          if (arr[board[row][i] - '0'] != 0) {
-            return false;
-          }
-          arr[idx++] = board[i][col] - '0';
-        }
-        row++;
-      }
-    }
-    return true;
+   
 
   }
 }
