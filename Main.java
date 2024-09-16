@@ -214,15 +214,135 @@ import java.util.*;
 
 //   }
 // }
-class Calculator{
-  public static int add(int a,int b){
-    return a+b;
+// class Calculator{
+//   public static int add(int a,int b){
+//     return a+b;
+//   }
+//   public static float add(int a,float b){
+//     return a+b;
+//   }
+//   public static int add(int a,int b,int c){
+//     return a+b+c;
+//   }
+
+// }
+
+// public class Main {
+
+//   public static void main(String[] args) {
+//     Scanner sc = new Scanner(System.in);
+//     System.out.println(Calculator.add(12, 13));
+//     System.out.println(Calculator.add(12, 13.6f));
+//     System.out.println(Calculator.add(12, 13,20));
+//   }
+// }
+class Test {
+  {
+    System.out.println("Hello ");
   }
-  public static float add(int a,float b){
-    return a+b;
+
+  Test() {
+    System.out.println("Hello cons..");
   }
-  public static int add(int a,int b,int c){
-    return a+b+c;
+
+  static {
+    System.out.println("Hello Static");
+  }
+
+  public void show() {
+  }
+}
+
+class Test2 {
+  Test2() {
+    System.out.println("this is=" + this);
+  }
+}
+
+class Test3 {
+  int x;
+
+  Test3(int x) {
+    // x=x;//0
+    this.x = x;// 10
+  }
+}
+
+class Test4 {
+  static int x = 1;
+  int y = 1;
+
+  Test4() {
+    x++;
+    y++;
+  }
+}
+
+class Test5 {
+  int x;
+
+  Test5(int x) {
+    this();
+    System.out.println("Param const....");
+  }
+
+  Test5() {
+    System.out.println("Default const....");
+  }
+}
+
+// Constructor Chaining
+class Test6 {
+  int x;
+  int y;
+
+  // No-argument constructor
+  Test6() {
+    this(10, 20); // Call the parameterized constructor
+    System.out.println("No-argument constructor");
+  }
+
+  // Parameterized constructor
+  Test6(int x, int y) {
+    this.x = x;
+    this.y = y;
+    System.out.println("Parameterized constructor: x = " + x + ", y = " + y);
+  }
+
+  // Another parameterized constructor
+  Test6(int x) {
+    this(x, 30); // Call another parameterized constructor
+    System.out.println("Single-argument constructor: x = " + x);
+  }
+}
+
+class Test7 {
+  public void fun1() {
+    System.out.println("Method 1");
+    this.fun2();
+  }
+
+  public void fun2() {
+    System.out.println("Method 2");
+  }
+}
+
+class Test8 {
+  String name;
+  int rollNo;
+
+  public Test8 first(String name) {
+    this.name = name;
+    return this;
+  }
+
+  public Test8 second(int r) {
+    this.rollNo = r;
+    return this;
+  }
+
+  public void show() {
+    System.out.println("name=" + name + "\nrollno=" + rollNo);
   }
 
 }
@@ -230,12 +350,9 @@ class Calculator{
 public class Main {
 
   public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
-    System.out.println(Calculator.add(12, 13));
-    System.out.println(Calculator.add(12, 13.6f));
-    System.out.println(Calculator.add(12, 13,20));
-
-   
+    Scanner sc = new Scanner(System.in);'
+    Test8 t = new Test8();
+    t.first("Zafar").second(12).show();
 
   }
 }
