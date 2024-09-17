@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.List;
 
 class Solution1 {
     // TC:O(N) SC:O(N)
@@ -34,7 +35,7 @@ class Solution {
             String time = tPoints.get(i);
             int hh = Integer.parseInt(time.substring(0, 2));// get HH convert into Int
             int mm = Integer.parseInt(time.substring(3));// get mm convert into int
-            list[i] = h * 60 + m;// convert time in minutes
+            list[i] = hh * 60 + mm;// convert time in minutes
         }
         Arrays.sort(list);
         int minDiff = Integer.MAX_VALUE;

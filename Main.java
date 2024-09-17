@@ -236,123 +236,154 @@ import java.util.*;
 //     System.out.println(Calculator.add(12, 13,20));
 //   }
 // }
-class Test {
-  {
-    System.out.println("Hello ");
-  }
+// class Test {
+//   {
+//     System.out.println("Hello ");
+//   }
 
-  Test() {
-    System.out.println("Hello cons..");
-  }
+//   Test() {
+//     System.out.println("Hello cons..");
+//   }
 
-  static {
-    System.out.println("Hello Static");
-  }
+//   static {
+//     System.out.println("Hello Static");
+//   }
 
-  public void show() {
-  }
-}
+//   public void show() {
+//   }
+// }
 
-class Test2 {
-  Test2() {
-    System.out.println("this is=" + this);
-  }
-}
+// class Test2 {
+//   Test2() {
+//     System.out.println("this is=" + this);
+//   }
+// }
 
-class Test3 {
-  int x;
+// class Test3 {
+//   int x;
 
-  Test3(int x) {
-    // x=x;//0
-    this.x = x;// 10
-  }
-}
+//   Test3(int x) {
+//     // x=x;//0
+//     this.x = x;// 10
+//   }
+// }
 
-class Test4 {
-  static int x = 1;
-  int y = 1;
+// class Test4 {
+//   static int x = 1;
+//   int y = 1;
 
-  Test4() {
-    x++;
-    y++;
-  }
-}
+//   Test4() {
+//     x++;
+//     y++;
+//   }
+// }
 
-class Test5 {
-  int x;
+// class Test5 {
+//   int x;
 
-  Test5(int x) {
-    this();
-    System.out.println("Param const....");
-  }
+//   Test5(int x) {
+//     this();
+//     System.out.println("Param const....");
+//   }
 
-  Test5() {
-    System.out.println("Default const....");
-  }
-}
+//   Test5() {
+//     System.out.println("Default const....");
+//   }
+// }
 
-// Constructor Chaining
-class Test6 {
-  int x;
-  int y;
+// // Constructor Chaining
+// class Test6 {
+//   int x;
+//   int y;
 
-  // No-argument constructor
-  Test6() {
-    this(10, 20); // Call the parameterized constructor
-    System.out.println("No-argument constructor");
-  }
+//   // No-argument constructor
+//   Test6() {
+//     this(10, 20); // Call the parameterized constructor
+//     System.out.println("No-argument constructor");
+//   }
 
-  // Parameterized constructor
-  Test6(int x, int y) {
-    this.x = x;
-    this.y = y;
-    System.out.println("Parameterized constructor: x = " + x + ", y = " + y);
-  }
+//   // Parameterized constructor
+//   Test6(int x, int y) {
+//     this.x = x;
+//     this.y = y;
+//     System.out.println("Parameterized constructor: x = " + x + ", y = " + y);
+//   }
 
-  // Another parameterized constructor
-  Test6(int x) {
-    this(x, 30); // Call another parameterized constructor
-    System.out.println("Single-argument constructor: x = " + x);
-  }
-}
+//   // Another parameterized constructor
+//   Test6(int x) {
+//     this(x, 30); // Call another parameterized constructor
+//     System.out.println("Single-argument constructor: x = " + x);
+//   }
+// }
 
-class Test7 {
-  public void fun1() {
-    System.out.println("Method 1");
-    this.fun2();
-  }
+// class Test7 {
+//   public void fun1() {
+//     System.out.println("Method 1");
+//     this.fun2();
+//   }
 
-  public void fun2() {
-    System.out.println("Method 2");
-  }
-}
+//   public void fun2() {
+//     System.out.println("Method 2");
+//   }
+// }
 
-class Test8 {
-  String name;
-  int rollNo;
+// class Test8 {
+//   String name;
+//   int rollNo;
 
-  public Test8 first(String name) {
-    this.name = name;
-    return this;
-  }
+//   public Test8 first(String name) {
+//     this.name = name;
+//     return this;
+//   }
 
-  public Test8 second(int r) {
-    this.rollNo = r;
-    return this;
-  }
+//   public Test8 second(int r) {
+//     this.rollNo = r;
+//     return this;
+//   }
 
-  public void show() {
-    System.out.println("name=" + name + "\nrollno=" + rollNo);
-  }
+//   public void show() {
+//     System.out.println("name=" + name + "\nrollno=" + rollNo);
+//   }
 
-}
+// }
+
+// public class Main {
+
+//   public static void main(String[] args) {
+//     Scanner sc = new Scanner(System.in);'
+//     Test8 t = new Test8();
+//     t.first("Zafar").second(12).show();
+
+//   }
+// }
 
 public class Main {
 
   public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);'
-    Test8 t = new Test8();
-    t.first("Zafar").second(12).show();
+    Scanner sc = new Scanner(System.in);
+    C c1 = new C();
+  }
+}
 
+class A {
+ 
+  A(int x) {
+    System.out.println("x="+x);
+  }
+}
+
+class B extends A {
+
+  B(int y) {
+    super(10);
+    System.out.println("y="+y);
+  }
+}
+
+class C extends B {
+  
+  C() {
+    super(15);
+    System.out.println("C");
   }
 }
