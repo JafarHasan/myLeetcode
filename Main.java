@@ -357,6 +357,7 @@ import java.util.*;
 //   }
 // }
 
+/* 
 public class Main {
 
   public static void main(String[] args) {
@@ -385,5 +386,138 @@ class C extends B {
   C() {
     super(15);
     System.out.println("C");
+  }
+}*/
+
+/* 
+public class Main {
+
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    Test obj1 = new Test(100.10f);
+    Test obj2 = new Test("Zafar", 12345);
+    Test obj3 = new Test("Hasan", 12007, 10000.0f);
+
+    obj1.showData();
+    obj2.showData();
+    obj3.showData();
+
+  }
+}
+
+class Test {
+  String name;
+  int rollNo;
+  float amount;
+
+  Test(float amount) {
+    this.name = "ABC";
+    this.rollNo = 10;
+    this.amount = amount;
+  }
+
+  Test(String name, int rollNo) {
+    this.name = name;
+    this.rollNo = rollNo;
+    this.amount = 100000.45f;
+  }
+
+  Test(String name, int rollNo, float amount) {
+    this.name = name;
+    this.rollNo = rollNo;
+    this.amount = amount;
+  }
+
+  void showData() {
+    System.out.println("Name: " + name);
+    System.out.println("Rollno: " + rollNo);
+    System.out.println("Amount: Rs" + amount);
+  }
+
+}*/
+
+// class Test {
+//   String name;
+
+//   Test(String name) {
+//     this.name = name;
+//   }
+
+//   @Override
+//   public String toString() {
+//     return "Hello," + name;
+//   }
+// }
+/* 
+class Parent {
+ 
+ // int a=20;
+  void method() {
+    System.out.println("Parent Class");
+  }
+}
+
+class Child extends Parent {
+  int a=10;
+  void method() {
+    System.out.println("Child Class");
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+   
+    Parent P = new Child();
+    P.method();
+    // P.childMethod(); error
+    System.out.println(P.a);
+
+  }
+}*/
+class Parent {
+
+  int a = 10;
+  static int b = 20;
+
+  Parent() {
+    System.out.println("Parent Const..");
+  }
+
+  void instanceMethod() {
+    System.out.println("Parent Instance Method");
+  }
+
+  static void staticMethod() {
+    System.out.println("Parent static method");
+  }
+}
+
+class Child extends Parent {
+  int a = 30;
+  static int b=40;
+   
+  Child() {
+    System.out.println("Child Const..");
+  }
+
+  @Override
+  void instanceMethod() {
+    System.out.println("Child Instance Method");
+  }
+
+  static void staticMethod() {
+    System.out.println("Child static method");
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+
+    Parent P = new Child();
+    System.out.println(P.a);
+    System.out.println(P.b);
+    P.instanceMethod();
+    P.staticMethod();
+
   }
 }
