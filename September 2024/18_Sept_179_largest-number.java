@@ -37,7 +37,7 @@ class Solution {
         for (int i = 0; i < nums.length; i++) {
             str[i] = String.valueOf(nums[i]);// convert each Int no to String
         }
-        Arrays.sort(str, (a, b) -> (b + a).compareTo(a + b));//check for String conctination 3,30 330 or 303
+        Arrays.sort(str, (a, b) -> (b + a).compareTo(a + b));// check for String conctination 3,30 330 or 303
         for (String i : str) {
             System.out.print(i + " ");
         }
