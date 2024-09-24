@@ -474,6 +474,7 @@ public class Main {
 
   }
 }*/
+/* 
 class Parent {
 
   int a = 10;
@@ -509,15 +510,47 @@ class Child extends Parent {
     System.out.println("Child static method");
   }
 }
+*/
+
+class StateBankOfIndia {
+  void bankHeadOffice() {
+    System.out.println("SBI head office=Mumbai");
+  }
+
+}
+
+class StateBankOfMysore extends StateBankOfIndia {
+  @Override
+  void bankHeadOffice() {
+    System.out.println("SB of Mysore head office=Mysore");
+  }
+}
+
+class StateBankOfPatiala extends StateBankOfIndia {
+  @Override
+  void bankHeadOffice() {
+    System.out.println("SB of Patiala head office=Patiala");
+  }
+}
 
 public class Main {
+  void printMethod(StateBankOfIndia obj) {
+    obj.bankHeadOffice();
+  }
+
   public static void main(String[] args) {
 
-    Parent P = new Child();
-    System.out.println(P.a);
-    System.out.println(P.b);
-    P.instanceMethod();
-    P.staticMethod();
+    Main m = new Main();
+    // StateBankOfIndia sbiObj = new StateBankOfIndia(); //method ovverrding ,check obj is refering to which class and call SBi class method
+    // m.printMethod(sbiObj); //SBI head office mumbai
+
+    // StateBankOfIndia sbiObj=new StateBankOfMysore();// method ovverrding ,check obj is refering to which class and call Mysore class method
+    // m.printMethod(sbiObj);//SB of Mysore head office=Mysore
+
+
+    StateBankOfIndia sbiObj=new StateBankOfPatiala();// method ovverrding ,check obj is refering to which class and call Patiala class method
+    m.printMethod(sbiObj);//SB of Mysore head office=Patiala
 
   }
 }
+
