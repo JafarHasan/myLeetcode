@@ -512,6 +512,7 @@ class Child extends Parent {
 }
 */
 
+/* 
 class StateBankOfIndia {
   void bankHeadOffice() {
     System.out.println("SBI head office=Mumbai");
@@ -553,4 +554,30 @@ public class Main {
 
   }
 }
+  */
 
+public class Main {
+  public static void main(String[] args) {
+    String s = "Raja Software Lab";
+    // required ans=baLe rawtfoSa jaR;
+    StringBuilder sb = new StringBuilder();
+    // reverse s
+    for (char ch : s.toCharArray()) {
+      if (ch != ' ')
+        sb.insert(0, ch);
+    }
+    StringBuilder ans = new StringBuilder();
+    int idx = 0;
+    for (int i = 0; i < s.length(); i++) {
+      char ch = s.charAt(i);
+      if (ch == ' ') {
+        ans.append(' ');
+      } else {
+        ans.append(sb.charAt(idx));
+        idx++;
+      }
+    }
+    System.out.println(ans);
+
+  }
+}
