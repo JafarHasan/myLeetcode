@@ -170,3 +170,17 @@ So if the parameters are:
 {39, 38, 38, 36, 34, 31, 28}, 37: It should return 3
 
 Both the Problem should be done in TC : O(N) and SC : O(1)
+
+To ME
+//You hv 2 and 5 coins and you hv to make a given rs(sum) using 2 and 5 coins reuturn the no of 2 and 5 coins we can make the sum=target
+//target 13  used 4*2+1*5=13 4 2 coins and 1 5 coins 
+
+// Java program to convert 12 hour 
+// format to  24 hour format 
+Input : 07:05:45PM
+Output : 19:05:45
+
+//given a Tic Toe  Game (Two Players X and Y)  matrix both players hv played their turn  now X will play 
+its last turn find X will win or Not
+
+//

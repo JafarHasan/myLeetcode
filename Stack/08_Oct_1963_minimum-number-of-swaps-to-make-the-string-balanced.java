@@ -40,7 +40,6 @@ class Solution1 {
     // Using STACK TC;O(N) SC:O(N) 122ms
     public int minSwaps(String s) {
         Stack<Character> st = new Stack<>();
-        int n = s.length();
         int swap = 0;
         for (char ch : s.toCharArray()) {
             if (ch == '[') {

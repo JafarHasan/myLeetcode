@@ -1,0 +1,13 @@
+1 What is AI ML
+2 How ChatGPT works?
+3.Internal Working of HashMap
+4.Stack and Queue with real life exapmle (where these are being used)Queue->In call centre to serve Calls in first come first serve bases
+ Stack->to store Browser History
+ Coding Questions:
+ 5.valid Paranthesis(asked to me)
+ 6.Remove Duplicate from an Array
+ 7.Climbing Stairs
+ 8.Merge two sorted Array
+ 9.TC and SC of sorting Alogs
+ 10.Abstract Class and Interface in java
+ 11.DB sql query->Name of Customers who never order
