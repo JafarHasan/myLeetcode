@@ -1,0 +1,172 @@
+package CompanyInterviewDSA;
+
+/*
+  Round 2 Questions
+  1. Remove duplicates from a sorted Array (such that each integer should only
+  be repeated at the max twice)
+  Eg-1:
+  Input: nums = [1,1,1,2,2,3]
+  Output: 5, nums = [1,1,2,2,3,_]
+  
+  Eg-2:
+  Input: nums = [0,0,1,1,2,-1,2,3,3]
+  Output: 7, nums = [0,0,1,1,2,3,3,,]
+  
+  2 . There is a classroom with a bunch of students in it. There is an entrance
+  exam to be part of this classroom.
+  
+  A bunch of students have already given this exam.
+  The ranking of the students is based on the marks they receive.
+  
+  For the class:
+  Marks = {39, 38, 38, 36, 34, 31, 28}
+  Ranking would be:
+  39 = 1
+  38 = 2
+  38 = 2
+  36 = 3
+  A new student wants to join the class. That student gives the entrance test,
+  the marks are x.
+  Write a program that will print the rank of this new student in the gi…
+
+
+  Questions asked in 2nd round
+  Add new node to sorted linked list
+  Add one to last element of array and if there is carry in that element add it
+  to previous element
+  Theory questions
+  Deep and shallow copy
+  Abstract class
+ 
+
+
+
+ 
+ * Focused on why changing to IT field from core background.
+ * 
+ * Coding assignment(only 1 question):
+ * Angel between hour hand and minute hand if 2 variables given e.g (03,00). Ans
+ * 90 degree
+ * 
+ * 3rd level interview:-
+ * Theory questions related to project:-@controlleradvice, aspect oriented
+ * programming, etc.
+ * 
+
+
+ * 2 coding questions:-
+ * 1. triangular pattern question:-Half Pyramid
+ * Input:- 4
+ * Output:-A
+ *        ABa
+ *       ABCba
+ *      ABCDcba
+ * 
+ * 2. Return the non repeated value from an array where everyother value is
+ * repeated twice except one.
+
+
+ * Done with the interview :
+ * Que 1)
+ * 8*6*4*2
+ * 6*4*2
+ * 4*2
+ * 2
+ *
+ * 
+ * Que 2)
+ * Max consecutive ones
+ * What do you know about RSL
+ * Why do you want to Join RSL
+ * 
+ 2 coding questions: 
+ 1st non repeating char from string, 
+ print rank of new student based on the marks, given marks of all the class, 
+Projects I have done, which all technologies I have used, why I used them, explain project working,etc
+Some hr questions, like timmings, location, etc
+
+
+Total rounds = 3
+The first round was easy , they asked me 2 easy questions and 1 easy-medium level question
+There were no theory questions.
+Second round:-
+Again 3 questions were asked, 1 was easy rest were medium level, but the interviewer tries to trick you asking various twist.
+
+Third round:-
+4 questions were asked to me, the guy who took my interview was tough, he asked me test cases where my logic was failing in a certain question rather than the solution and after that he talked about my projects asked some tough practical questions.
+
+
+INTERVIEW EXPERIENCE OF A RECENTLY PLACED STUDENT
+ Find sorted subsequence of size 3
+Input:
+A[] = [9, 2, 1, 1, 3, 7, 4]       
+Output: True
+Explanation: A subsequence [2,3,4] exists
+
+A[] = [1, 1, 3]
+Output: False
+
+ Reverse the string, keeping spaces intact at their original position as per input string.
+Input: Raja software lab
+Output: bale rawtfosa jaR
+
+
+ Take an array and k as inputs. Multiply k with last digit from array and insert Unit digit of the multiplication on last digit and multiply carry (which is at 10th place) with previous number. And do similar till array ends.
+Input: [1, 7, 9]
+k = 4
+Output: [2, 1, 6]
+
+Input: [7, 7, 9]
+k = 4
+Output: [1, 4 , 1, 6]
+
+ Given an array of coins and you a value v, return the minimum number of coins whose sum equal to value and print the
+ coin also
+Coins ={25,10,5} , v = 30
+Output:-
+
+2 coins  
+25,5
+ Given two array  arr={2,4,7,9,1} and index = {4,1,0,2,3}, update the arr according to the value given in index 
+Output:- {7,4,9,1,2}
+
+Round 2 Questions 
+1.  Remove duplicates from a sorted Array (such that each integer should only be repeated at the max twice)
+Eg-1:
+Input: nums = [1,1,1,2,2,3]
+Output: 5, nums = [1,1,2,2,3,_]
+
+Eg-2:
+Input: nums = [0,0,1,1,2,-1,2,3,3]
+Output: 7, nums = [0,0,1,1,2,3,3,,]
+
+2 . There is a classroom with a bunch of students in it. There is an entrance exam to be part of this classroom.
+
+A bunch of students have already given this exam.
+The ranking of the students is based on the marks they receive.
+
+For the class:
+Marks = {39, 38, 38, 36, 34, 31, 28}
+Ranking would be:
+39 = 1
+38 = 2
+38 = 2
+36 = 3
+A new student wants to join the class. That student gives the entrance test, the marks are x.
+Write a program that will print the rank of this new student in the gi…
+ given class.
+void printRank {ArrayList<Integer> currentMarksOfClass, int newCandidateMark) {}
+For the class:
+Marks = {39, 38, 38, 36, 34, 31, 28}
+Ranking would be:
+39 = 1
+38 = 2
+38 = 2
+36 = 3
+.
+.
+So if the parameters are:  
+{39, 38, 38, 36, 34, 31, 28}, 38: It should return 2
+{39, 38, 38, 36, 34, 31, 28}, 37: It should return 3
+
+Both the Problem should be done in TC : O(N) and SC : O(1)

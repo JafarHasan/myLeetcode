@@ -556,28 +556,94 @@ public class Main {
 }
   */
 
+/* 
+public class Main {
+public static void main(String[] args) {
+  String s = "Raja Software Lab";
+  // required ans=baLe rawtfoSa jaR;
+  StringBuilder sb = new StringBuilder();
+  // reverse s
+  for (char ch : s.toCharArray()) {
+    if (ch != ' ')
+      sb.insert(0, ch);
+  }
+  StringBuilder ans = new StringBuilder();
+  int idx = 0;
+  for (int i = 0; i < s.length(); i++) {
+    char ch = s.charAt(i);
+    if (ch == ' ') {
+      ans.append(' ');
+    } else {
+      ans.append(sb.charAt(idx));
+      idx++;
+    }
+  }
+  System.out.println(ans);
+
+}
+}
+*/
+/*
+W           W
+  E       E
+    L   L
+      C
+    O   O
+  M       M
+E           E
+ */
+/* 
 public class Main {
   public static void main(String[] args) {
-    String s = "Raja Software Lab";
-    // required ans=baLe rawtfoSa jaR;
-    StringBuilder sb = new StringBuilder();
-    // reverse s
-    for (char ch : s.toCharArray()) {
-      if (ch != ' ')
-        sb.insert(0, ch);
-    }
-    StringBuilder ans = new StringBuilder();
-    int idx = 0;
-    for (int i = 0; i < s.length(); i++) {
-      char ch = s.charAt(i);
-      if (ch == ' ') {
-        ans.append(' ');
-      } else {
-        ans.append(sb.charAt(idx));
-        idx++;
-      }
-    }
-    System.out.println(ans);
+    String s = "WELCOME";
+    int n = s.length();
 
+    for (int i = 0; i < n; i++) {
+      for (int j = 0; j < n; j++) {
+        if (i == j) {
+          System.out.print(s.charAt(i) + " ");
+        } else if (i + j == n - 1) {
+          System.out.print(s.charAt(i) + " ");
+        } else {
+          System.out.print("  ");
+        }
+      }
+      System.out.println();
+    }
+  }
+}*/
+// class A{
+//   public void showData(){
+//     System.out.println("In class A");
+//   }
+// }
+// class B extends A{
+//   public void showData(){
+//     System.out.println("In class B");
+//   }
+// }
+// class C extends B{
+//   // public void showData(){
+//   //   System.out.println("In class C");
+//   // }
+// }
+abstract class Language {
+  abstract void speak();
+
+  void sayHello() {
+    System.out.println("say hello in Your Language");
+  }
+}
+
+class User1 extends Language {
+  void speak() {
+    System.out.println("I speak English");
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    User1 obj = new User1();
+    obj.speak();
   }
 }
