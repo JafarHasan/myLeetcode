@@ -1,7 +1,8 @@
 1 What is AI ML
 2 How ChatGPT works?
 3.Internal Working of HashMap
-4.Stack and Queue with real life exapmle (where these are being used)Queue->In call centre to serve Calls in first come first serve bases
+4.Stack and Queue with real life exapmle (where these are being used)Queue->In call centre to serve Calls in 
+first come first serve bases
  Stack->to store Browser History
  Coding Questions:
  5.valid Paranthesis(asked to me)
@@ -11,3 +12,31 @@
  9.TC and SC of sorting Alogs
  10.Abstract Class and Interface in java
  11.DB sql query->Name of Customers who never order
+
+
+12 what are beans DI tellme some annotation for DI in Spring
+13 Java program to convert 12 hour 
+ format to  24 hour format 
+ Input : 07:05:45PM
+Output : 19:05:45
+14 annotation used for DI in Spring Boot whats 
+
+
+questions asked to me , what is profile, what is difference between rest api and sop,
+ what is synchronisation and asynchronisation give me
+ some examples based on real life AI ML, AWS and so on
+
+
+ Questions:
+1. Experience/projects related questions 
+2. DSA problem: check whether sudoku is valid or not 3×3, anagrams
+
+
+Done with the interview.
+
+They have asked deeply about my projects I would say I have to explain him each class line by line. (35mins)
+What is JPA repository and how it internally works 
+What is Spring boot and spring jpa how it internally connected with each other.
+Given two sorted array. You have to merge them but your answer should be in reverse order.
+(He told me to write in any ide instead of Leetcode or gfg) 
+Fully focused on resume and your projects description.

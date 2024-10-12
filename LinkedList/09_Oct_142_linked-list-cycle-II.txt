@@ -1,5 +1,3 @@
-package LinkedList;
-
 /**
  * Definition for singly-linked list.
  * class ListNode {
@@ -16,9 +14,11 @@ public class Solution {
         if(head==null || head.next==null)return null;
         ListNode slow=head;
         ListNode fast=head;
+
         while(fast!=null && fast.next!=null){
             slow=slow.next;
             fast=fast.next.next;
+            
             //cycle found!
             if(slow==fast){
                 //find entry point 
