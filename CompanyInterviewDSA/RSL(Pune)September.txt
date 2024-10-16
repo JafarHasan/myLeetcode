@@ -176,9 +176,11 @@ To ME
 //target 13  used 4*2+1*5=13 4 2 coins and 1 5 coins 
 
 // Java program to convert 12 hour 
-// format to  24 hour format 
-Input : 07:05:45PM
-Output : 19:05:45
+Time Conversion
+Given a time in 12-hour AM/PM format, convert it to military (24-hour) time.
+Note
+12:00:00AM on a 12-hour clock is 00:00:00 on a 24-hour clock.
+12:00:00PM on a 12-hour clock is 12:00:00 on a 24-hour clock.
 
 //given a Tic Toe  Game (Two Players X and Y)  matrix both players hv played their turn  now X will play 
 its last turn find X will win or Not
