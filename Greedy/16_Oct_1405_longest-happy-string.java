@@ -3,7 +3,7 @@ package Greedy;
 class Solution {
 
     // Greedy Approach 0ms 100% beats best solution
-    
+
     public String longestDiverseString(int a, int b, int c) {
         StringBuilder sb = new StringBuilder();
         int cntA = 0, cntB = 0, cntC = 0;
