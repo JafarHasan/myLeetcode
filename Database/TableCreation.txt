@@ -1,0 +1,119 @@
+Task:
+Create a table called employees with the following requirements and constraints:
+
+Table Structure:
+Column Name	Data Type	Constraint
+emp_id	INT	Primary Key, should be a positive number (greater than 0)
+emp_name	VARCHAR(50)	Cannot be NULL
+age	INT	Must be greater than or equal to 18 and less than or equal to 60
+department	VARCHAR(30)	Cannot be NULL
+salary	DECIMAL(10, 2)	Must be greater than or equal to 3000
+joining_date	DATE	Default should be the current date
+email	VARCHAR(100)	Must be unique
+Deliverables:
+Write the SQL query to create the employees table with all the above constraints.
+Insert at least 5 rows of sample data, ensuring all constraints are met.
+Write a query to display the list of employees whose age is greater than 25 and salary is greater than 5000.
+
+mysql> create table emp(
+    -> id int primary key check(id>0),
+    -> name varchar(50) not null,
+    -> age int check(age>=18 AND age<=60),
+    -> dept varchar(30) not null,
+    -> joining timestamp default current_timestamp,
+    -> email varchar(100) not null unique
+    -> );
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> desc emp;
++---------+--------------+------+-----+-------------------+-------------------+
+| Field   | Type         | Null | Key | Default           | Extra             |
++---------+--------------+------+-----+-------------------+-------------------+
+| id      | int          | NO   | PRI | NULL              |                   |
+| name    | varchar(50)  | NO   |     | NULL              |                   |
+| age     | int          | YES  |     | NULL              |                   |
+| dept    | varchar(30)  | NO   |     | NULL              |                   |
+| joining | timestamp    | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
+| email   | varchar(100) | NO   | UNI | NULL              |                   |
++---------+--------------+------+-----+-------------------+-------------------+
+
+Assignment: Create a Department Table with Constraints
+Objective:
+You need to create a Department table with proper constraints and establish a parent-child relationship with an already existing Employee table.
+
+Assignment Requirements:
+Department Table Fields:
+dept_id: Primary key (auto-incremented).
+dept_name: Unique and not null.
+location: Cannot be null.
+manager_id: A foreign key referencing emp_id in the Employee table.
+Constraints:
+Ensure dept_name is unique.
+Ensure location is always specified (not null).
+Use ON DELETE SET NULL for manager_id, so if an employee (manager) is deleted, the manager_id should become null in the Department table.
+Use ON UPDATE CASCADE for manager_id, so if the emp_id in the Employee table is updated, it automatically updates in the Department table.
+
+
+mysql> CREATE TABLE dept (
+    ->     id INT PRIMARY KEY AUTO_INCREMENT,
+    ->     name VARCHAR(50) NOT NULL,
+    ->     location VARCHAR(100) NOT NULL,
+    ->     managerId INT,
+    ->     FOREIGN KEY (managerId) REFERENCES emp(id) ON DELETE CASCADE ON UPDATE CASCADE
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc dept;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| id        | int          | NO   | PRI | NULL    | auto_increment |
+| name      | varchar(50)  | NO   |     | NULL    |                |
+| location  | varchar(100) | NO   |     | NULL    |                |
+| managerId | int          | YES  | MUL | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+
+INSERT INTO emp (name, age, dept, email)
+VALUES
+('John Doe', 35, 'IT', 'johndoe@example.com'),
+('Alice Smith', 29, 'HR', 'alicesmith@example.com'),
+('Bob Johnson', 42, 'Finance', 'bobjohnson@example.com'),
+('Charlie Brown', 31, 'IT', 'charliebrown@example.com'),
+('Eva White', 38, 'Marketing', 'evawhite@example.com');
+
+
+mysql> select *from emp;
++----+---------------+------+-----------+---------------------+--------------------------+
+| id | name          | age  | dept      | joining             | email                    |
++----+---------------+------+-----------+---------------------+--------------------------+
+|  1 | John Doe      |   35 | IT        | 2025-01-04 21:30:37 | johndoe@example.com      |
+|  2 | Alice Smith   |   29 | HR        | 2025-01-04 21:30:37 | alicesmith@example.com   |
+|  3 | Bob Johnson   |   42 | Finance   | 2025-01-04 21:30:37 | bobjohnson@example.com   |
+|  4 | Charlie Brown |   31 | IT        | 2025-01-04 21:30:37 | charliebrown@example.com |
+|  5 | Eva White     |   38 | Marketing | 2025-01-04 21:30:37 | evawhite@example.com     |
++----+---------------+------+-----------+---------------------+--------------------------+
+5 rows in set (0.00 sec)
+
+INSERT INTO dept (name, location, managerId)
+VALUES
+('IT Department', 'New York', 1), -- John Doe is the manager (ID: 1)
+('HR Department', 'Chicago', 2), -- Alice Smith is the manager (ID: 2)
+('Finance Department', 'San Francisco', 3); -- Bob Johnson is the manager (ID: 3)
+
+mysql> select *from dept;
++----+--------------------+---------------+-----------+
+| id | name               | location      | managerId |
++----+--------------------+---------------+-----------+
+|  1 | IT Department      | New York      |         1 |
+|  2 | HR Department      | Chicago       |         2 |
+|  3 | Finance Department | San Francisco |         3 |
++----+--------------------+---------------+-----------+
+3 rows in set (0.00 sec)
+
+WRONG managerID insertion result as:Because of FK constraints
+ insert into dept(name,location,managerId) values('CS dept','New Delhi',6);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`practice`.`dept`, CONSTRAINT `dept_ibfk_1` FOREIGN KEY (`managerId`) REFERENCES `emp` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
+
+
