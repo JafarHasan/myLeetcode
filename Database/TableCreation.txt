@@ -116,4 +116,3 @@ WRONG managerID insertion result as:Because of FK constraints
  insert into dept(name,location,managerId) values('CS dept','New Delhi',6);
 ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`practice`.`dept`, CONSTRAINT `dept_ibfk_1` FOREIGN KEY (`managerId`) REFERENCES `emp` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
 
-

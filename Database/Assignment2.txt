@@ -1,0 +1,264 @@
+mysql> Create table worker(
+    -> id int not null primary key auto_increment,
+    -> firstName varchar(20),
+    -> lastName varchar(20),
+    -> salary decimal(10,2),
+    -> joiningDate datetime,
+    -> dept varchar(20)
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc worker;
++-------------+---------------+------+-----+---------+----------------+
+| Field       | Type          | Null | Key | Default | Extra          |
++-------------+---------------+------+-----+---------+----------------+
+| id          | int           | NO   | PRI | NULL    | auto_increment |
+| firstName   | varchar(20)   | YES  |     | NULL    |                |
+| lastName    | varchar(20)   | YES  |     | NULL    |                |
+| salary      | decimal(10,2) | YES  |     | NULL    |                |
+| joiningDate | datetime      | YES  |     | NULL    |                |
+| dept        | varchar(20)   | YES  |     | NULL    |                |
++-------------+---------------+------+-----+---------+----------------+
+6 rows in set (0.02 sec)
+
+mysql> Create table title(
+    -> RefId int,
+    -> title varchar(20),
+    -> affectedFrom datetime,
+    -> foreign key (RefId) references worker(id) on delete cascade on update cascade
+    -> );
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> desc title;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| RefId        | int         | YES  | MUL | NULL    |       |
+| title        | varchar(20) | YES  |     | NULL    |       |
+| affectedFrom | datetime    | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+INSERT INTO worker (id, firstName, lastName, salary, joiningDate, dept) VALUES
+(1, 'Siddharth', 'Singh', 80000.00, '2019-03-20 09:00:00', 'HR'),
+(2, 'Lavesh', 'Ahir', 300000.00, '2019-07-11 09:00:00', 'Admin'),
+(3, 'Abhishek', 'Midha', 500000.00, '2019-03-20 09:00:00', 'HR'),
+(4, 'Rahul', 'Mahar', 200000.00, '2019-03-20 09:00:00', 'Admin'),
+(5, 'Saurabh', 'Madavi', 90000.00, '2019-07-11 09:00:00', 'Admin'),
+(6, 'Aman', 'Nain', 75000.00, '2019-07-11 09:00:00', 'Account'),
+(7, 'Vaibhav', 'Varshney', 100000.00, '2019-02-09 09:00:00', 'Account'),
+(8, 'Farhaan', 'Majied', 500000.00, '2019-05-11 09:00:00', 'Admin');
+
+mysql> select *from worker;
++----+-----------+----------+-----------+---------------------+---------+
+| id | firstName | lastName | salary    | joiningDate         | dept    |
++----+-----------+----------+-----------+---------------------+---------+
+|  1 | Siddharth | Singh    |  80000.00 | 2019-03-20 09:00:00 | HR      |
+|  2 | Lavesh    | Ahir     | 300000.00 | 2019-07-11 09:00:00 | Admin   |
+|  3 | Abhishek  | Midha    | 500000.00 | 2019-03-20 09:00:00 | HR      |
+|  4 | Rahul     | Mahar    | 200000.00 | 2019-03-20 09:00:00 | Admin   |
+|  5 | Saurabh   | Madavi   |  90000.00 | 2019-07-11 09:00:00 | Admin   |
+|  6 | Aman      | Nain     |  75000.00 | 2019-07-11 09:00:00 | Account |
+|  7 | Vaibhav   | Varshney | 100000.00 | 2019-02-09 09:00:00 | Account |
+|  8 | Farhaan   | Majied   | 500000.00 | 2019-05-11 09:00:00 | Admin   |
++----+-----------+----------+-----------+---------------------+---------+
+8 rows in set (0.00 sec)
+
+INSERT INTO title (RefId, title, affectedFrom) VALUES
+(1, 'Manager', '2021-02-20 00:00:00'),
+(2, 'Executive', '2021-06-11 00:00:00'),
+(8, 'Executive', '2021-06-11 00:00:00'),
+(5, 'Manager', '2021-06-11 00:00:00'),
+(4, 'Asst. Manager', '2021-06-11 00:00:00'),
+(7, 'Executive', '2021-06-11 00:00:00'),
+(6, 'Lead', '2021-06-11 00:00:00'),
+(3, 'Lead', '2021-06-11 00:00:00');
+
+mysql> select *from title;
++-------+---------------+---------------------+
+| RefId | title         | affectedFrom        |
++-------+---------------+---------------------+
+|     1 | Manager       | 2021-02-20 00:00:00 |
+|     2 | Executive     | 2021-06-11 00:00:00 |
+|     8 | Executive     | 2021-06-11 00:00:00 |
+|     5 | Manager       | 2021-06-11 00:00:00 |
+|     4 | Asst. Manager | 2021-06-11 00:00:00 |
+|     7 | Executive     | 2021-06-11 00:00:00 |
+|     6 | Lead          | 2021-06-11 00:00:00 |
+|     3 | Lead          | 2021-06-11 00:00:00 |
++-------+---------------+---------------------+
+8 rows in set (0.00 sec)
+
+
+mysql> create table workerCopy like worker;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> select *from workerCopy;
+Empty set (0.00 sec)
+
+mysql> desc workerCopy;
++-------------+---------------+------+-----+---------+----------------+
+| Field       | Type          | Null | Key | Default | Extra          |
++-------------+---------------+------+-----+---------+----------------+
+| id          | int           | NO   | PRI | NULL    | auto_increment |
+| firstName   | varchar(20)   | YES  |     | NULL    |                |
+| lastName    | varchar(20)   | YES  |     | NULL    |                |
+| salary      | decimal(10,2) | YES  |     | NULL    |                |
+| joiningDate | datetime      | YES  |     | NULL    |                |
+| dept        | varchar(20)   | YES  |     | NULL    |                |
++-------------+---------------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+
+mysql> create table workerCopy like worker;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> select *from workerCopy;
+Empty set (0.00 sec)
+
+mysql> desc workerCopy;
++-------------+---------------+------+-----+---------+----------------+
+| Field       | Type          | Null | Key | Default | Extra          |
++-------------+---------------+------+-----+---------+----------------+
+| id          | int           | NO   | PRI | NULL    | auto_increment |
+| firstName   | varchar(20)   | YES  |     | NULL    |                |
+| lastName    | varchar(20)   | YES  |     | NULL    |                |
+| salary      | decimal(10,2) | YES  |     | NULL    |                |
+| joiningDate | datetime      | YES  |     | NULL    |                |
+| dept        | varchar(20)   | YES  |     | NULL    |                |
++-------------+---------------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> select firstName as Worker_Name from worker;
++-------------+
+| Worker_Name |
++-------------+
+| Siddharth   |
+| Lavesh      |
+| Abhishek    |
+| Rahul       |
+| Saurabh     |
+| Aman        |
+| Vaibhav     |
+| Farhaan     |
++-------------+
+8 rows in set (0.00 sec)
+
+mysql> select upper(firstName) as Worker_Name from worker;
++-------------+
+| Worker_Name |
++-------------+
+| SIDDHARTH   |
+| LAVESH      |
+| ABHISHEK    |
+| RAHUL       |
+| SAURABH     |
+| AMAN        |
+| VAIBHAV     |
+| FARHAAN     |
++-------------+
+8 rows in set (0.00 sec)
+
+mysql> select distinct department from worker;
+ERROR 1054 (42S22): Unknown column 'department' in 'field list'
+mysql> select distinct dept from worker;
++---------+
+| dept    |
++---------+
+| HR      |
+| Admin   |
+| Account |
++---------+
+3 rows in set (0.00 sec)
+
+mysql> select REPLACE(firstName,'a','A') as Worker_Name from worker;
++-------------+
+| Worker_Name |
++-------------+
+| SiddhArth   |
+| LAvesh      |
+| Abhishek    |
+| RAhul       |
+| SAurAbh     |
+| AmAn        |
+| VAibhAv     |
+| FArhAAn     |
++-------------+
+8 rows in set (0.00 sec)
+
+mysql> select REPLACE(firstName,'an','AN') as Worker_Name from worker;
++-------------+
+| Worker_Name |
++-------------+
+| Siddharth   |
+| Lavesh      |
+| Abhishek    |
+| Rahul       |
+| Saurabh     |
+| AmAN        |
+| Vaibhav     |
+| FarhaAN     |
++-------------+
+8 rows in set (0.00 sec)
+
+mysql> select CONCAT(firstName,' ',lastName) as Full_Name from worker;
++------------------+
+| Full_Name        |
++------------------+
+| Siddharth Singh  |
+| Lavesh Ahir      |
+| Abhishek Midha   |
+| Rahul Mahar      |
+| Saurabh Madavi   |
+| Aman Nain        |
+| Vaibhav Varshney |
+| Farhaan Majied   |
++------------------+
+8 rows in set (0.00 sec)
+
+mysql> select *from worker order by firstName;
++----+-----------+----------+-----------+---------------------+---------+
+| id | firstName | lastName | salary    | joiningDate         | dept    |
++----+-----------+----------+-----------+---------------------+---------+
+|  3 | Abhishek  | Midha    | 500000.00 | 2019-03-20 09:00:00 | HR      |
+|  6 | Aman      | Nain     |  75000.00 | 2019-07-11 09:00:00 | Account |
+|  8 | Farhaan   | Majied   | 500000.00 | 2019-05-11 09:00:00 | Admin   |
+|  2 | Lavesh    | Ahir     | 300000.00 | 2019-07-11 09:00:00 | Admin   |
+|  4 | Rahul     | Mahar    | 200000.00 | 2019-03-20 09:00:00 | Admin   |
+|  5 | Saurabh   | Madavi   |  90000.00 | 2019-07-11 09:00:00 | Admin   |
+|  1 | Siddharth | Singh    |  80000.00 | 2019-03-20 09:00:00 | HR      |
+|  7 | Vaibhav   | Varshney | 100000.00 | 2019-02-09 09:00:00 | Account |
++----+-----------+----------+-----------+---------------------+---------+
+8 rows in set (0.00 sec)
+
+mysql> select *from worker order by lastName desc;
++----+-----------+----------+-----------+---------------------+---------+
+| id | firstName | lastName | salary    | joiningDate         | dept    |
++----+-----------+----------+-----------+---------------------+---------+
+|  7 | Vaibhav   | Varshney | 100000.00 | 2019-02-09 09:00:00 | Account |
+|  1 | Siddharth | Singh    |  80000.00 | 2019-03-20 09:00:00 | HR      |
+|  6 | Aman      | Nain     |  75000.00 | 2019-07-11 09:00:00 | Account |
+|  3 | Abhishek  | Midha    | 500000.00 | 2019-03-20 09:00:00 | HR      |
+|  8 | Farhaan   | Majied   | 500000.00 | 2019-05-11 09:00:00 | Admin   |
+|  4 | Rahul     | Mahar    | 200000.00 | 2019-03-20 09:00:00 | Admin   |
+|  5 | Saurabh   | Madavi   |  90000.00 | 2019-07-11 09:00:00 | Admin   |
+|  2 | Lavesh    | Ahir     | 300000.00 | 2019-07-11 09:00:00 | Admin   |
++----+-----------+----------+-----------+---------------------+---------+
+8 rows in set (0.00 sec)
+
+mysql> select *from worker order by firstName asc,dept desc;
++----+-----------+----------+-----------+---------------------+---------+
+| id | firstName | lastName | salary    | joiningDate         | dept    |
++----+-----------+----------+-----------+---------------------+---------+
+|  3 | Abhishek  | Midha    | 500000.00 | 2019-03-20 09:00:00 | HR      |
+|  6 | Aman      | Nain     |  75000.00 | 2019-07-11 09:00:00 | Account |
+|  8 | Farhaan   | Majied   | 500000.00 | 2019-05-11 09:00:00 | Admin   |
+|  2 | Lavesh    | Ahir     | 300000.00 | 2019-07-11 09:00:00 | Admin   |
+|  4 | Rahul     | Mahar    | 200000.00 | 2019-03-20 09:00:00 | Admin   |
+|  5 | Saurabh   | Madavi   |  90000.00 | 2019-07-11 09:00:00 | Admin   |
+|  1 | Siddharth | Singh    |  80000.00 | 2019-03-20 09:00:00 | HR      |
+|  7 | Vaibhav   | Varshney | 100000.00 | 2019-02-09 09:00:00 | Account |
++----+-----------+----------+-----------+---------------------+---------+
+8 rows in set (0.00 sec)
+
+mysql>
