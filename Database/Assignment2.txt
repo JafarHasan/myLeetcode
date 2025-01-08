@@ -261,4 +261,153 @@ mysql> select *from worker order by firstName asc,dept desc;
 +----+-----------+----------+-----------+---------------------+---------+
 8 rows in set (0.00 sec)
 
-mysql>
+mysql> select CONCAT(firstName,' ',lastName,'->',dept) as Full_Name from worker;
++---------------------------+
+| Full_Name                 |
++---------------------------+
+| Siddharth Singh->HR       |
+| Lavesh Ahir->Admin        |
+| Abhishek Midha->HR        |
+| Rahul Mahar->Admin        |
+| Saurabh Madavi->Admin     |
+| Aman Nain->Account        |
+| Vaibhav Varshney->Account |
+| Farhaan Majied->Admin     |
++---------------------------+
+8 rows in set (0.00 sec)
+
+mysql> select *from worker where firstName='rahul';
++----+-----------+----------+-----------+---------------------+-------+
+| id | firstName | lastName | salary    | joiningDate         | dept  |
++----+-----------+----------+-----------+---------------------+-------+
+|  4 | Rahul     | Mahar    | 200000.00 | 2019-03-20 09:00:00 | Admin |
++----+-----------+----------+-----------+---------------------+-------+
+1 row in set (0.01 sec)
+
+mysql> select *from worker where firstName in('rahul','lavesh');
++----+-----------+----------+-----------+---------------------+-------+
+| id | firstName | lastName | salary    | joiningDate         | dept  |
++----+-----------+----------+-----------+---------------------+-------+
+|  2 | Lavesh    | Ahir     | 300000.00 | 2019-07-11 09:00:00 | Admin |
+|  4 | Rahul     | Mahar    | 200000.00 | 2019-03-20 09:00:00 | Admin |
++----+-----------+----------+-----------+---------------------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select *from worker where firstName not in('rahul','lavesh','farhan');
++----+-----------+----------+-----------+---------------------+---------+
+| id | firstName | lastName | salary    | joiningDate         | dept    |
++----+-----------+----------+-----------+---------------------+---------+
+|  1 | Siddharth | Singh    |  80000.00 | 2019-03-20 09:00:00 | HR      |
+|  3 | Abhishek  | Midha    | 500000.00 | 2019-03-20 09:00:00 | HR      |
+|  5 | Saurabh   | Madavi   |  90000.00 | 2019-07-11 09:00:00 | Admin   |
+|  6 | Aman      | Nain     |  75000.00 | 2019-07-11 09:00:00 | Account |
+|  7 | Vaibhav   | Varshney | 100000.00 | 2019-02-09 09:00:00 | Account |
+|  8 | Farhaan   | Majied   | 500000.00 | 2019-05-11 09:00:00 | Admin   |
++----+-----------+----------+-----------+---------------------+---------+
+6 rows in set (0.00 sec)
+
+mysql> select *from worker where firstName not in('rahul','lavesh','farhaan');
++----+-----------+----------+-----------+---------------------+---------+
+| id | firstName | lastName | salary    | joiningDate         | dept    |
++----+-----------+----------+-----------+---------------------+---------+
+|  1 | Siddharth | Singh    |  80000.00 | 2019-03-20 09:00:00 | HR      |
+|  3 | Abhishek  | Midha    | 500000.00 | 2019-03-20 09:00:00 | HR      |
+|  5 | Saurabh   | Madavi   |  90000.00 | 2019-07-11 09:00:00 | Admin   |
+|  6 | Aman      | Nain     |  75000.00 | 2019-07-11 09:00:00 | Account |
+|  7 | Vaibhav   | Varshney | 100000.00 | 2019-02-09 09:00:00 | Account |
++----+-----------+----------+-----------+---------------------+---------+
+5 rows in set (0.00 sec)
+
+mysql> select *from worker where firstName like 'S%';
++----+-----------+----------+----------+---------------------+-------+
+| id | firstName | lastName | salary   | joiningDate         | dept  |
++----+-----------+----------+----------+---------------------+-------+
+|  1 | Siddharth | Singh    | 80000.00 | 2019-03-20 09:00:00 | HR    |
+|  5 | Saurabh   | Madavi   | 90000.00 | 2019-07-11 09:00:00 | Admin |
++----+-----------+----------+----------+---------------------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select *from worker where firstName like '%n';
++----+-----------+----------+-----------+---------------------+---------+
+| id | firstName | lastName | salary    | joiningDate         | dept    |
++----+-----------+----------+-----------+---------------------+---------+
+|  6 | Aman      | Nain     |  75000.00 | 2019-07-11 09:00:00 | Account |
+|  8 | Farhaan   | Majied   | 500000.00 | 2019-05-11 09:00:00 | Admin   |
++----+-----------+----------+-----------+---------------------+---------+
+2 rows in set (0.00 sec)
+
+
+mysql> select *from worker where firstName like '___n';
++----+-----------+----------+----------+---------------------+---------+
+| id | firstName | lastName | salary   | joiningDate         | dept    |
++----+-----------+----------+----------+---------------------+---------+
+|  6 | Aman      | Nain     | 75000.00 | 2019-07-11 09:00:00 | Account |
++----+-----------+----------+----------+---------------------+---------+
+1 row in set (0.00 sec)
+
+mysql> select *from worker where salary>=100000 AND salary<=500000;
++----+-----------+----------+-----------+---------------------+---------+
+| id | firstName | lastName | salary    | joiningDate         | dept    |
++----+-----------+----------+-----------+---------------------+---------+
+|  2 | Lavesh    | Ahir     | 300000.00 | 2019-07-11 09:00:00 | Admin   |
+|  3 | Abhishek  | Midha    | 500000.00 | 2019-03-20 09:00:00 | HR      |
+|  4 | Rahul     | Mahar    | 200000.00 | 2019-03-20 09:00:00 | Admin   |
+|  7 | Vaibhav   | Varshney | 100000.00 | 2019-02-09 09:00:00 | Account |
+|  8 | Farhaan   | Majied   | 500000.00 | 2019-05-11 09:00:00 | Admin   |
++----+-----------+----------+-----------+---------------------+---------+
+5 rows in set (0.00 sec)
+
+mysql> select *from worker where salary between 100000 AND 500000;
++----+-----------+----------+-----------+---------------------+---------+
+| id | firstName | lastName | salary    | joiningDate         | dept    |
++----+-----------+----------+-----------+---------------------+---------+
+|  2 | Lavesh    | Ahir     | 300000.00 | 2019-07-11 09:00:00 | Admin   |
+|  3 | Abhishek  | Midha    | 500000.00 | 2019-03-20 09:00:00 | HR      |
+|  4 | Rahul     | Mahar    | 200000.00 | 2019-03-20 09:00:00 | Admin   |
+|  7 | Vaibhav   | Varshney | 100000.00 | 2019-02-09 09:00:00 | Account |
+|  8 | Farhaan   | Majied   | 500000.00 | 2019-05-11 09:00:00 | Admin   |
++----+-----------+----------+-----------+---------------------+---------+
+5 rows in set (0.00 sec)
+
+mysql> select sum(salary) total_salary from worker group by dept;
++--------------+
+| total_salary |
++--------------+
+|    580000.00 |
+|   1090000.00 |
+|    175000.00 |
++--------------+
+3 rows in set (0.00 sec)
+
+mysql> select max(salary) from worker;
++-------------+
+| max(salary) |
++-------------+
+|   500000.00 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select firstName from worker where salary=(select max(salary) from worker);
++-----------+
+| firstName |
++-----------+
+| Abhishek  |
+| Farhaan   |
++-----------+
+2 rows in set (0.00 sec)
+
+mysql> select max(salary) from worker where salary<(select max(salary) from worker);
++-------------+
+| max(salary) |
++-------------+
+|   300000.00 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select max(salary) from worker;
++-------------+
+| max(salary) |
++-------------+
+|   500000.00 |
++-------------+
+1 row in set (0.00 )
