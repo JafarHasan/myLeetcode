@@ -1,0 +1,64 @@
+import java.util.*;
+class Solution {
+    class Pair implements Comparable<Pair> {
+        int h;
+        int i;
+        int j;
+
+        Pair(int h, int i, int j) {
+            this.h = h;
+            this.i = i;
+            this.j = j;
+        }
+
+        public int compareTo(Pair p) {
+            return this.h - p.h;
+        }
+    }
+//TC:O(N*M*log(nm)) SC:O(mn)s
+    public int trapRainWater(int[][] heightMap) {
+        int n = heightMap.length;
+        int m = heightMap[0].length;
+        PriorityQueue<Pair> pq = new PriorityQueue<>();
+        boolean vis[][]=new boolean[n][m];
+        //set boundary cell ele as visited
+         for(int i=0; i<n; i++){
+            for(int j=0; j<m; j++){
+                if(i==0 || j==0 || i==n-1||j==m-1){
+                    pq.add(new Pair(heightMap[i][j],i,j));
+                    vis[i][j]=true;
+                }
+            }
+         }
+
+         int dir[][]={{0,1},{0,-1},{1,0},{-1,0}};
+         int water=0;
+
+//BFS
+         while(!pq.isEmpty()){
+            Pair p=pq.poll();
+            int currentHeight=p.h;
+            int curreent_i=p.i;
+            int current_j=p.j;
+
+            //visiting the adjecent ele
+            for(int d[]:dir){
+                int new_row=curreent_i+d[0];
+                int new_Col=current_j+d[1];
+
+                //check ele is within row col ans not vis
+                if(new_row>=0 && new_row<n && new_Col>=0 && new_Col<m && vis[new_row][new_Col]!=true){
+                    if(currentHeight-heightMap[new_row][new_Col]>0){
+                        water+=currentHeight-heightMap[new_row][new_Col];
+                        pq.add(new Pair(currentHeight,new_row,new_Col));
+                    }
+                    else{
+                        pq.add(new Pair(heightMap[new_row][new_Col],new_row,new_Col));
+                    }
+                    vis[new_row][new_Col]=true;
+                }
+            }
+         }
+         return water;
+    }
+}
