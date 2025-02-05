@@ -1,0 +1,20 @@
+STRIQUE
+Intro
+project explanation
+String rotation of each other(DSA)
+Exception Handling
+What is the work of repository layer
+method overloading
+what is constructor?
+
+RACLOOP 
+Asked DSA...String Reverse plus reverse each character as well in the same string.
+ASKED about oops concepts
+Then Asked SQL questions about view, indexing and give scenario based sql query to write!!
+Asked about Spring Boot, Auto wiring, how spring applications work
+Core java concepts, features, lambda expression and some more resume based question...bas😄🔮
+
+TWINLEAVES
+Interview experience of twinleaves backend
+first round: for loop vs stream api( .map()), JPA vs Hibernate, JPQL vs native query, 4 pillars of OOPs, 
+multithreading, Java Synchronization, flow of how you can write the code in your project, model mapper, DAO.
