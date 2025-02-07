@@ -186,3 +186,131 @@ Note
 its last turn find X will win or Not
 
 //
+
+
+
+class Main {
+
+    public static void main(String[] args) {
+        String s = "Raja Software Lab";
+        int n = s.length();
+        solve(s, n);
+    }
+
+    private static void solve(String s, int n) {
+
+        StringBuilder sb = new StringBuilder();
+        //insert all char except space into a SB
+        for (int i = 0; i < n; i++) {
+            char ch = s.charAt(i);
+            if (ch != ' ') {
+                sb.append(ch);
+            }
+
+        }
+        sb.reverse();
+        for (int i = 0; i < n; i++) {
+            char ch = s.charAt(i);
+            if (ch == ' ') {
+                sb.insert(i, ch);
+            }
+        }
+        System.out.println(sb);
+    }
+}
+
+ * Input:- 4
+ * Output:-A
+ *        ABa
+ *       ABCba
+ *      ABCDcba
+ */
+class Main {
+
+    public static void main(String[] args) {
+        int n = 29;
+
+        for (int i = 1; i <= n; i++) {
+            //sapces
+            for (int j = (n - i); j >= 0; j--) {
+                System.out.print(" ");
+            }
+            //string A AB ABC ABCD
+            for (int j = 1; j <= i; j++) {
+                System.out.print((char) ('A' + (j - 1) % 26));
+
+            }
+            //other half patterns reverse a ba cba
+            for (int j = i - 1; j >= 1; j--) {
+                System.out.print((char) ('a' + (j - 1) % 26));
+
+            }
+
+            System.out.println();
+
+        }
+    }
+}
+
+ * 8*6*4*2
+ * 6*4*2
+ * 4*2
+ * 2
+ *
+import java.lang.*;
+
+class Main {
+
+    public static void main(String[] args) {
+        int n = 4;
+
+        for (int i = 1; i <= n; i++) {
+            int start = (n - i + 1);
+            for (int j = 1; j <= (n - i) + 1; j++) {
+                System.out.print(2 * start);
+                if (j != (n - i + 1)) {
+                    System.out.print("*");
+                }
+                start--;
+            }
+            System.out.println();
+        }
+    }
+}
+
+class Main {
+//we are just printing element original array is not modified
+
+    public static void main(String[] args) {
+        int arr[] = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int n = arr.length;
+        System.out.print(arr[0] + ",");
+        for (int i = 1; i < n; i++) {
+            while (i < n && arr[i] == arr[i - 1]) {
+                i++;
+            }
+            System.out.print(arr[i] + ",");
+        }
+    }
+    //Modified the original array
+    public static void main(String[] args) {
+        int arr[] = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int n = arr.length;
+        int j = 1;
+        for (int i = 1; i < n; i++) {
+
+            while (i < n && arr[i] == arr[i - 1]) {
+                i++;
+            }
+            if (i < n) {
+                arr[j] = arr[i];
+            }
+            j++;
+        }
+
+        System.out.println(Arrays.toString(arr));
+
+    }
+
+  
+}

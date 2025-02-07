@@ -7,12 +7,14 @@ What is the work of repository layer
 method overloading
 what is constructor?
 
+
 RACLOOP 
 Asked DSA...String Reverse plus reverse each character as well in the same string.
 ASKED about oops concepts
 Then Asked SQL questions about view, indexing and give scenario based sql query to write!!
 Asked about Spring Boot, Auto wiring, how spring applications work
 Core java concepts, features, lambda expression and some more resume based question...bas😄🔮
+
 
 TWINLEAVES
 Interview experience of twinleaves backend
