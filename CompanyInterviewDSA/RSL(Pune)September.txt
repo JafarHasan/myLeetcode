@@ -314,3 +314,26 @@ class Main {
 
   
 }
+
+
+
+
+class Main {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 7, 3, 8, 4, 0, 9};
+        int maximum = Integer.MIN_VALUE;
+        int secondMax = Integer.MIN_VALUE;
+        for (int ele : arr) {
+            if (ele > maximum) {
+                secondMax = maximum;
+                maximum = ele;
+            } else if (ele > secondMax && ele!=maximum) {
+                secondMax = ele;
+
+            }
+        }
+        secondMax=(secondMax==maximum)?-1:secondMax;
+        System.out.println("Maximum=" + maximum);
+        System.out.print("SecondMaximum=" + secondMax);
+    }
+}
