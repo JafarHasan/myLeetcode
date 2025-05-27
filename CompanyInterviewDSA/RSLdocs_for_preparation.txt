@@ -1,0 +1,752 @@
+import java.util.*;
+
+import java.util.Arrays;
+
+public class SortingAlgorithms {
+
+    public static void bubbleSort(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n-1; i++) {
+            for (int j = 0; j < n-i-1; j++) {
+                if (arr[j] > arr[j+1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
+            }
+        }
+    }
+
+    public static void insertionSort(int[] arr) {
+        int n = arr.length;
+        for (int i = 1; i < n; ++i) {
+            int key = arr[i];
+            int j = i - 1;
+
+            while (j >= 0 && arr[j] > key) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            arr[j + 1] = key;
+        }
+    }
+
+    public static void selectionSort(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n-1; i++) {
+            int min_idx = i;
+            for (int j = i+1; j < n; j++)
+                if (arr[j] < arr[min_idx])
+                    min_idx = j;
+
+            int temp = arr[min_idx];
+            arr[min_idx] = arr[i];
+            arr[i] = temp;
+        }
+    }
+
+    public static void quickSort(int[] arr, int low, int high) {
+        if (low < high) {
+            int pi = partition(arr, low, high);
+
+            quickSort(arr, low, pi-1);
+            quickSort(arr, pi+1, high);
+        }
+    }
+
+    private static int partition(int[] arr, int low, int high) {
+        int pivot = arr[high];
+        int i = (low-1);
+
+        for (int j = low; j < high; j++) {
+            if (arr[j] < pivot) {
+                i++;
+
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+
+        int temp = arr[i+1];
+        arr[i+1] = arr[high];
+        arr[high] = temp;
+
+        return i+1;
+    }
+
+    public static void mergeSort(int[] arr, int l, int r) {
+        if (l < r) {
+            int m = (l+r)/2;
+
+            mergeSort(arr, l, m);
+            mergeSort(arr, m+1, r);
+
+            merge(arr, l, m, r);
+        }
+    }
+
+    private static void merge(int[] arr, int l, int m, int r) {
+        int n1 = m-l+1;
+        int n2 = r-m;
+
+        int[] L = new int[n1];
+        int[] R = new int[n2];
+
+        for (int i=0; i<n1; ++i)
+            L[i] = arr[l + i];
+        for (int j=0; j<n2; ++j)
+            R[j] = arr[m + 1 + j];
+
+        int i=0, j=0;
+        int k=l;
+        while (i<n1 && j<n2) {
+            if (L[i] <= R[j]) {
+                arr[k++] = L[i++];
+            } else {
+                arr[k++] = R[j++];
+            }
+        }
+
+        while (i<n1) arr[k++] = L[i++];
+        while (j<n2) arr[k++] = R[j++];
+    }
+
+    public static void printArray(int[] arr) {
+        System.out.println(Arrays.toString(arr));
+    }
+
+    public static void main(String[] args) {
+        int[] input = {64, 25, 12, 22, 11};
+
+        int[] bubble = input.clone();
+        int[] insertion = input.clone();
+        int[] selection = input.clone();
+        int[] quick = input.clone();
+        int[] merge = input.clone();
+
+        System.out.println("Original:   " + Arrays.toString(input));
+
+        bubbleSort(bubble);
+        System.out.println("Bubble:     " + Arrays.toString(bubble));
+
+        insertionSort(insertion);
+        System.out.println("Insertion:  " + Arrays.toString(insertion));
+
+        selectionSort(selection);
+        System.out.println("Selection:  " + Arrays.toString(selection));
+
+        quickSort(quick, 0, quick.length - 1);
+        System.out.println("Quick:      " + Arrays.toString(quick));
+
+        mergeSort(merge, 0, merge.length - 1);
+        System.out.println("Merge:      " + Arrays.toString(merge));
+    }
+}
+-----------------------
+
+public class DiamondPattern {
+    public static void main(String[] args) {
+        int n = 5; 
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = i; j < n; j++) {
+                System.out.print(" ");
+            }
+            for (int j = 1; j <= (2*i - 1); j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+
+        for (int i = n - 1; i >= 1; i--) {
+            for (int j = n; j > i; j--) {
+                System.out.print(" ");
+            }
+            for (int j = 1; j <= (2*i - 1); j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+--------------
+
+public class FourSum {
+
+    public List<List<Integer>> fourSum(int[] nums, int target) {
+        List<List<Integer>> result = new ArrayList<>();
+        int n = nums.length;
+        if (n < 4) return result;
+
+        Arrays.sort(nums); 
+
+        for (int i = 0; i < n - 3; i++) {
+            if (i > 0 && nums[i] == nums[i - 1]) continue;
+
+            for (int j = i + 1; j < n - 2; j++) {
+                if (j > i + 1 && nums[j] == nums[j - 1]) continue;
+
+                int left = j + 1;
+                int right = n - 1;
+
+                while (left < right) {
+                    long sum = (long) nums[i] + nums[j] + nums[left] + nums[right]; 
+
+                    if (sum == target) {
+                        result.add(Arrays.asList(nums[i], nums[j], nums[left], nums[right]));
+
+                        while (left < right && nums[left] == nums[left + 1]) left++;
+                        while (left < right && nums[right] == nums[right - 1]) right--;
+
+                        left++;
+                        right--;
+
+                    } else if (sum < target) {
+                        left++;
+                    } else {
+                        right--;
+                    }
+                }
+            }
+        }
+
+        return result;
+    }
+    public static void main(String[] args) {
+        FourSum fs = new FourSum();
+        int[] nums = {1, 0, -1, 0, -2, 2};
+        int target = 0;
+
+        List<List<Integer>> result = fs.fourSum(nums, target);
+        for (List<Integer> quad : result) {
+            System.out.println(quad);
+        }
+    }
+}
+
+---------------------
+import java.util.*;
+
+public class Main {
+
+    public int maxProfitOneTransaction(int[] prices) {
+        int minPrice = Integer.MAX_VALUE;
+        int maxProfit = 0;
+        for (int price : prices) {
+            minPrice = Math.min(minPrice, price);
+            maxProfit = Math.max(maxProfit, price - minPrice);
+        }
+        return maxProfit;
+    }
+
+    public int maxProfitUnlimitedTransactions(int[] prices) {
+        int profit = 0;
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] > prices[i - 1]) {
+                profit += prices[i] - prices[i - 1];
+            }
+        }
+        return profit;
+    }
+
+    public int maxProfitTwoTransactions(int[] prices) {
+        int buy1 = Integer.MIN_VALUE, sell1 = 0;
+        int buy2 = Integer.MIN_VALUE, sell2 = 0;
+
+        for (int price : prices) {
+            buy1 = Math.max(buy1, -price);
+            sell1 = Math.max(sell1, buy1 + price);
+            buy2 = Math.max(buy2, sell1 - price);
+            sell2 = Math.max(sell2, buy2 + price);
+        }
+
+        return sell2;
+    }
+
+    public int maxProfitKTransactions(int k, int[] prices) {
+        int n = prices.length;
+        if (n == 0 || k == 0) return 0;
+        if (k >= n / 2) return maxProfitUnlimitedTransactions(prices); 
+
+        int[][] dp = new int[k + 1][n];
+
+        for (int t = 1; t <= k; t++) {
+            int maxDiff = -prices[0];
+            for (int d = 1; d < n; d++) {
+                dp[t][d] = Math.max(dp[t][d - 1], prices[d] + maxDiff);
+                maxDiff = Math.max(maxDiff, dp[t - 1][d] - prices[d]);
+            }
+        }
+
+        return dp[k][n - 1];
+    }
+
+    public int maxProfitWithCooldown(int[] prices) {
+        int n = prices.length;
+        if (n <= 1) return 0;
+
+        int[] sell = new int[n];
+        int[] buy = new int[n];
+
+        buy[0] = -prices[0];
+        buy[1] = Math.max(buy[0], -prices[1]);
+        sell[1] = Math.max(0, buy[0] + prices[1]);
+
+        for (int i = 2; i < n; i++) {
+            buy[i] = Math.max(buy[i - 1], sell[i - 2] - prices[i]);
+            sell[i] = Math.max(sell[i - 1], buy[i - 1] + prices[i]);
+        }
+
+        return sell[n - 1];
+    }
+
+    public int maxProfitWithFee(int[] prices, int fee) {
+        int cash = 0, hold = -prices[0];
+
+        for (int i = 1; i < prices.length; i++) {
+            cash = Math.max(cash, hold + prices[i] - fee);
+            hold = Math.max(hold, cash - prices[i]);
+        }
+
+        return cash;
+    }
+
+    public static void main(String[] args) {
+        Main sbs = new Main();
+        int[] prices = {7, 1, 5, 3, 6, 4};
+        int fee = 1;
+        int k = 2;
+
+        System.out.println("1. Max Profit (One Transaction): " + sbs.maxProfitOneTransaction(prices));
+        System.out.println("2. Max Profit (Unlimited Transactions): " + sbs.maxProfitUnlimitedTransactions(prices));
+        System.out.println("3. Max Profit (Two Transactions): " + sbs.maxProfitTwoTransactions(prices));
+        System.out.println("4. Max Profit (K=" + k + " Transactions): " + sbs.maxProfitKTransactions(k, prices));
+        System.out.println("5. Max Profit (With Cooldown): " + sbs.maxProfitWithCooldown(prices));
+        System.out.println("6. Max Profit (With Fee=" + fee + "): " + sbs.maxProfitWithFee(prices, fee));
+    }
+}
+
+
+----------------------
+import java.util.*;
+
+import java.util.*;
+
+public class Main {
+
+    public int fibonacci(int n) {
+        if (n <= 1) return n;
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+
+    public int fibonacciMemo(int n, Map<Integer, Integer> memo) {
+        if (n <= 1) return n;
+        if (memo.containsKey(n)) return memo.get(n);
+        int result = fibonacciMemo(n - 1, memo) + fibonacciMemo(n - 2, memo);
+        memo.put(n, result);
+        return result;
+    }
+
+    public int factorial(int n) {
+        if (n == 0 || n == 1) return 1;
+        return n * factorial(n - 1);
+    }
+
+    public int sumOfDigits(int n) {
+        if (n == 0) return 0;
+        return (n % 10) + sumOfDigits(n / 10);
+    }
+
+    public String reverseString(String s) {
+        if (s.isEmpty()) return s;
+        return reverseString(s.substring(1)) + s.charAt(0);
+    }
+
+    public boolean isPalindrome(String s) {
+        return isPalindromeHelper(s, 0, s.length() - 1);
+    }
+
+    private boolean isPalindromeHelper(String s, int left, int right) {
+        if (left >= right) return true;
+        if (s.charAt(left) != s.charAt(right)) return false;
+        return isPalindromeHelper(s, left + 1, right - 1);
+    }
+
+    public void printSubsets(String s) {
+        System.out.println("Subsets of \"" + s + "\":");
+        printSubsetsHelper(s, "", 0);
+    }
+
+    private void printSubsetsHelper(String s, String current, int index) {
+        if (index == s.length()) {
+            System.out.println(current);
+            return;
+        }
+        printSubsetsHelper(s, current + s.charAt(index), index + 1);
+        printSubsetsHelper(s, current, index + 1);
+    }
+
+    public static void main(String[] args) {
+        Main rp = new Main();
+
+        int fibN = 7;
+        System.out.println("Fibonacci (" + fibN + "): " + rp.fibonacci(fibN));
+        System.out.println("Fibonacci with memo (" + fibN + "): " + rp.fibonacciMemo(fibN, new HashMap<>()));
+
+        int factN = 5;
+        System.out.println("Factorial (" + factN + "): " + rp.factorial(factN));
+
+        int digitSumN = 12345;
+        System.out.println("Sum of digits (" + digitSumN + "): " + rp.sumOfDigits(digitSumN));
+
+        String input = "recursion";
+        System.out.println("Reversed string of \"" + input + "\": " + rp.reverseString(input));
+
+        String palindromeStr = "madam";
+        System.out.println("Is \"" + palindromeStr + "\" a palindrome? " + rp.isPalindrome(palindromeStr));
+
+        String subsetStr = "abc";
+        rp.printSubsets(subsetStr);
+
+        int hanoiDisks = 3;
+        System.out.println("Tower of Hanoi with " + hanoiDisks + " disks:");
+        rp.towerOfHanoi(hanoiDisks, 'A', 'B', 'C');
+    }
+}
+
+
+------------------------
+interface Vehicle {
+    void start(); 
+}
+
+// Abstract Class: abstraction
+abstract class Engine {
+    public abstract void ignite(); 
+
+    public void fuelType() {
+        System.out.println("Fuel type: Petrol"); 
+    }
+}
+
+class Car extends Engine implements Vehicle {
+    private String brand;
+
+    public Car(String brand) {
+        this.brand = brand;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    @Override
+    public void start() {
+        System.out.println(brand + " car is starting.");
+    }
+
+    @Override
+    public void ignite() {
+        System.out.println("Igniting car engine...");
+    }
+
+    public void drive() {
+        System.out.println("Driving the car normally.");
+    }
+
+    public void drive(String mode) {
+        System.out.println("Driving the car in " + mode + " mode.");
+    }
+}
+
+class ElectricCar extends Car {
+    public ElectricCar(String brand) {
+        super(brand);
+    }
+
+    @Override
+    public void ignite() {
+        System.out.println("Powering electric motor...");
+    }
+
+    @Override
+    public void start() {
+        System.out.println(getBrand() + " electric car is starting silently.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car car = new Car("Toyota");
+        car.drive();
+        car.drive("Eco");
+
+        Car tesla = new ElectricCar("Tesla"); 
+        tesla.start();      
+        tesla.ignite();     
+        tesla.fuelType();   
+
+        System.out.println("Brand: " + tesla.getBrand());
+    }
+}
+
+
+-------------------------
+import java.util.*;
+
+
+public class Main {
+
+    static class Graph {
+        int V;
+        List<List<Edge>> adj;
+
+        static class Edge {
+            int to, weight;
+            Edge(int to, int weight) {
+                this.to = to;
+                this.weight = weight;
+            }
+        }
+
+        public Graph(int V) {
+            this.V = V;
+            adj = new ArrayList<>();
+            for (int i = 0; i < V; i++) {
+                adj.add(new ArrayList<>());
+            }
+        }
+
+        public void addEdge(int u, int v, int weight, boolean bidirectional) {
+            adj.get(u).add(new Edge(v, weight));
+            if (bidirectional) {
+                adj.get(v).add(new Edge(u, weight));
+            }
+        }
+
+        public void dfs(int start) {
+            boolean[] visited = new boolean[V];
+            System.out.print("DFS: ");
+            dfsUtil(start, visited);
+            System.out.println();
+        }
+
+        private void dfsUtil(int u, boolean[] visited) {
+            visited[u] = true;
+            System.out.print(u + " ");
+            for (Edge edge : adj.get(u)) {
+                if (!visited[edge.to]) {
+                    dfsUtil(edge.to, visited);
+                }
+            }
+        }
+
+        public void bfs(int start) {
+            boolean[] visited = new boolean[V];
+            Queue<Integer> queue = new LinkedList<>();
+            queue.add(start);
+            visited[start] = true;
+
+            System.out.print("BFS: ");
+            while (!queue.isEmpty()) {
+                int u = queue.poll();
+                System.out.print(u + " ");
+                for (Edge edge : adj.get(u)) {
+                    if (!visited[edge.to]) {
+                        visited[edge.to] = true;
+                        queue.add(edge.to);
+                    }
+                }
+            }
+            System.out.println();
+        }
+
+        public boolean hasCycleUndirected() {
+            boolean[] visited = new boolean[V];
+            for (int i = 0; i < V; i++) {
+                if (!visited[i]) {
+                    if (hasCycleUndirectedUtil(i, -1, visited)) return true;
+                }
+            }
+            return false;
+        }
+
+        private boolean hasCycleUndirectedUtil(int u, int parent, boolean[] visited) {
+            visited[u] = true;
+            for (Edge edge : adj.get(u)) {
+                if (!visited[edge.to]) {
+                    if (hasCycleUndirectedUtil(edge.to, u, visited)) return true;
+                } else if (edge.to != parent) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public boolean hasCycleDirected() {
+            boolean[] visited = new boolean[V];
+            boolean[] recursionStack = new boolean[V];
+            for (int i = 0; i < V; i++) {
+                if (hasCycleDirectedUtil(i, visited, recursionStack)) return true;
+            }
+            return false;
+        }
+
+        private boolean hasCycleDirectedUtil(int u, boolean[] visited, boolean[] recursionStack) {
+            if (recursionStack[u]) return true;
+            if (visited[u]) return false;
+
+            visited[u] = true;
+            recursionStack[u] = true;
+
+            for (Edge edge : adj.get(u)) {
+                if (hasCycleDirectedUtil(edge.to, visited, recursionStack)) return true;
+            }
+
+            recursionStack[u] = false;
+            return false;
+        }
+
+        public void dijkstra(int source) {
+            int[] dist = new int[V];
+            Arrays.fill(dist, Integer.MAX_VALUE);
+            dist[source] = 0;
+
+            PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a[1]));
+            pq.offer(new int[]{source, 0});
+
+            while (!pq.isEmpty()) {
+                int[] curr = pq.poll();
+                int u = curr[0], d = curr[1];
+
+                if (d > dist[u]) continue;
+
+                for (Edge edge : adj.get(u)) {
+                    int v = edge.to, weight = edge.weight;
+                    if (dist[u] + weight < dist[v]) {
+                        dist[v] = dist[u] + weight;
+                        pq.offer(new int[]{v, dist[v]});
+                    }
+                }
+            }
+
+            System.out.println("Dijkstra's shortest distances from node " + source + ":");
+            for (int i = 0; i < V; i++) {
+                System.out.println("To " + i + ": " + (dist[i] == Integer.MAX_VALUE ? "INF" : dist[i]));
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Graph g = new Graph(6);
+        g.addEdge(0, 1, 1, true);
+        g.addEdge(0, 2, 1, true);
+        g.addEdge(1, 3, 1, true);
+        g.addEdge(3, 4, 1, true);
+        g.addEdge(4, 5, 1, true);
+        g.addEdge(5, 3, 1, true); 
+
+        g.dfs(0);
+        g.bfs(0);
+
+        System.out.println("Cycle in Undirected Graph: " + g.hasCycleUndirected());
+        System.out.println("Cycle in Directed Graph: " + g.hasCycleDirected());
+
+        Graph weighted = new Graph(5);
+        weighted.addEdge(0, 1, 2, false);
+        weighted.addEdge(0, 2, 4, false);
+        weighted.addEdge(1, 2, 1, false);
+        weighted.addEdge(1, 3, 7, false);
+        weighted.addEdge(2, 4, 3, false);
+        weighted.addEdge(3, 4, 1, false);
+
+        weighted.dijkstra(0);
+    }
+}
+
+------------------------------------------
+
+import java.util.*;
+
+
+public class Main {
+
+    public static boolean subsetSum(int[] arr, int target) {
+        int n = arr.length;
+        boolean[][] dp = new boolean[n + 1][target + 1];
+
+        for (int i = 0; i <= n; i++) dp[i][0] = true; 
+
+        for (int i = 1; i <= n; i++) {
+            for (int sum = 1; sum <= target; sum++) {
+                if (arr[i - 1] > sum) {
+                    dp[i][sum] = dp[i - 1][sum];
+                } else {
+                    dp[i][sum] = dp[i - 1][sum] || dp[i - 1][sum - arr[i - 1]];
+                }
+            }
+        }
+
+        return dp[n][target];
+    }
+
+    public static int knapsack(int[] weights, int[] values, int capacity) {
+        int n = weights.length;
+        int[][] dp = new int[n + 1][capacity + 1];
+
+        for (int i = 1; i <= n; i++) {
+            for (int w = 0; w <= capacity; w++) {
+                if (weights[i - 1] <= w) {
+                    dp[i][w] = Math.max(dp[i - 1][w], values[i - 1] + dp[i - 1][w - weights[i - 1]]);
+                } else {
+                    dp[i][w] = dp[i - 1][w];
+                }
+            }
+        }
+
+        return dp[n][capacity];
+    }
+
+    public static int lcs(String s1, String s2) {
+        int m = s1.length();
+        int n = s2.length();
+        int[][] dp = new int[m + 1][n + 1];
+
+        for (int i = 1; i <= m; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (s1.charAt(i - 1) == s2.charAt(j - 1)) {
+                    dp[i][j] = 1 + dp[i - 1][j - 1];
+                } else {
+                    dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+                }
+            }
+        }
+
+        return dp[m][n];
+    }
+
+    public static void main(String[] args) {
+        int[] subsetArr = {3, 34, 4, 12, 5, 2};
+        int target = 9;
+        System.out.println("Subset sum possible: " + subsetSum(subsetArr, target));
+
+        int[] weights = {1, 3, 4, 5};
+        int[] values = {10, 40, 50, 70};
+        int capacity = 8;
+        System.out.println("Knapsack max value: " + knapsack(weights, values, capacity));
+
+        String s1 = "AGGTAB";
+        String s2 = "GXTXAYB";
+        System.out.println("LCS length: " + lcs(s1, s2));
+    }
+}
+
+DOCS Link
+https://docs.google.com/document/d/1EQdebKB9oxznHRxgMDU_U1UxolwQuAW5tBcPPMlomkI/edit?tab=t.0

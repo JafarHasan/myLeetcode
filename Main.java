@@ -627,23 +627,48 @@ public class Main {
 //   //   System.out.println("In class C");
 //   // }
 // }
-abstract class Language {
-  abstract void speak();
+// abstract class Language {
+//   abstract void speak();
 
-  void sayHello() {
-    System.out.println("say hello in Your Language");
-  }
-}
+//   void sayHello() {
+//     System.out.println("say hello in Your Language");
+//   }
+// }
 
-class User1 extends Language {
-  void speak() {
-    System.out.println("I speak English");
-  }
-}
+// class User1 extends Language {
+//   void speak() {
+//     System.out.println("I speak English");
+//   }
+// }
 
-public class Main {
-  public static void main(String[] args) {
-    User1 obj = new User1();
-    obj.speak();
+// public class Main {
+//   public static void main(String[] args) {
+//     User1 obj = new User1();
+//     obj.speak();
+//   }
+// }
+
+
+class  Main{
+  public static void main(String...args){
+    int n=5;
+    for(int i=1;i<=n;i++){
+      for(int j=1;j<=(n-i);j++){
+        System.out.print("   ");
+      }
+      for(int j=1;j<=(2*i-1);j++){
+        System.out.print(" * ");
+      }
+      System.out.println();
+    }
+    for(int i=n-1;i>=1;i--){
+      for(int j=1;j<=(n-i);j++){
+        System.out.print("   ");
+      }
+      for(int j=1;j<=(2*i-1);j++){
+        System.out.print(" * ");
+      }
+      System.out.println();
+    }
   }
 }

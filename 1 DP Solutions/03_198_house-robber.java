@@ -13,7 +13,7 @@ class Solution1 {
         if (i >= n)
             return 0;
 
-        // pick (if pick get the curr money and goto next->next house)
+        // pick (if pick ,get the curr money and goto next->next house)
         int steal = nums[i] + solve(nums, i + 2, n);
         // not pick (if not robbery this house goto next house)
         int skip = solve(nums, i + 1, n);
