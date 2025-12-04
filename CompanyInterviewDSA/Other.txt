@@ -34,8 +34,31 @@ Print Pattern
 
 */
 
+//public class Main{
 
-/*
+	//public static void main(String[] args) {
+		System.out.println("Hello World");
+		// int n=5;
+		// int no=1;
+		// for(int i=1;i<=n;i++){
+		//     //print star pattern
+		//     for(int j=1;j<=(n-i+1);j++){
+		//         System.out.print("* ");
+		//     }
+		//     //skip
+		//     for(int j=1;j<=(i-1);j++)no++;
+		//     //no pattern
+		//     for(int j=1;j<=i;j++){
+		//         System.out.print(no+" ");
+		//         no++;
+		//     }
+		//     //next line
+		//     System.out.println();
+		
+	}
+}
+
+/*Leetcode 2062
 Given a string of lowercase letters in the range ascii['a'-'z'], determine the number
 of substrings that can be created where every letter is a vowel and every vowel is
 present at least once. The vowels are ['a', 'e', 'i', 'o', 'u']. A substring is a
@@ -62,29 +85,56 @@ There are two qualifying substrings:
 s[0:5] = "aaeiou"
 s[1:5] = "aeiou"*/
 
-//public class Main{
 
-	//public static void main(String[] args) {
-		System.out.println("Hello World");
-		// int n=5;
-		// int no=1;
-		// for(int i=1;i<=n;i++){
-		//     //print star pattern
-		//     for(int j=1;j<=(n-i+1);j++){
-		//         System.out.print("* ");
-		//     }
-		//     //skip
-		//     for(int j=1;j<=(i-1);j++)no++;
-		//     //no pattern
-		//     for(int j=1;j<=i;j++){
-		//         System.out.print(no+" ");
-		//         no++;
-		//     }
-		//     //next line
-		//     System.out.println();
-		
-	}
+class Solution {
+    private static boolean isVowel(char c) {
+        return c == 'a' || c == 'i' || c == 'o' || c == 'u' || c == 'e';
+    }
+
+    public int countVowelSubstrings(String word) {
+        int n = word.length();
+        int cnt = 0;
+        for (int i = 0; i < n; i++) {
+            Set<Character> set = new HashSet<>();
+            for (int j = i; j < n; j++) {
+                if (!isVowel(word.charAt(j)))
+                    break;
+                set.add(word.charAt(j));
+                if (set.size() == 5){
+                    System.out.println(word.substring(i,j+1));
+                    cnt++;
+                }
+
+            }
+        }
+        return cnt;
+    }
 }
+
+print pattern
+* * * * 1
+* * * 0 1
+* * 1 0 1
+* 0 1 0 1
+
+class main {
+
+    public static void main(String[] args) {
+        int n = 5;
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= (n - i); j++) {
+                System.out.print("* ");
+            }
+            int start=(i%2==0)?1: 0;
+            for (int j = 1; j <= i; j++) {
+               System.out.print(start+" ");
+               start=1-start;
+            }
+            System.out.println();
+        }
+    }
+}
+
 
 
 
