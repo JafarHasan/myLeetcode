@@ -1,10 +1,13 @@
+
 import java.util.*;
 
 class Solution {
+
     // Using Map TC:O(NlogN) SC:O(2N)=>O(N)
     public int[] arrayRankTransform(int[] arr) {
-        if (arr.length == 0)
+        if (arr.length == 0) {
             return arr;
+        }
         HashMap<Integer, Integer> map = new HashMap<>();
         int temp[] = arr.clone();
         Arrays.sort(temp);
@@ -20,10 +23,12 @@ class Solution {
 }
 
 class Solution2 {
+
     // Using Min Heap TC:O(N) SC:O(N)
     public int[] arrayRankTransform(int[] arr) {
-        if (arr.length == 0)
+        if (arr.length == 0) {
             return arr;
+        }
         PriorityQueue<Pair> pq = new PriorityQueue<>();
         for (int i = 0; i < arr.length; i++) {
             pq.add(new Pair(arr[i], i));
@@ -48,6 +53,7 @@ class Solution2 {
 }
 
 class Pair implements Comparable<Pair> {
+
     int val;
     int idx;
 
