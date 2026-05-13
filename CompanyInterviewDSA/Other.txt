@@ -157,3 +157,165 @@ class main {
 7. Various Springboot Annotations
 8. write custome exceptions ( gave one scenario ) and explain
 9. write one examples on runtime polymorphism and cross question on it
+
+
+OPKEY Interview FOR QA
+
+
+
+/*
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		//System.out.println("Hello World");
+		String name="Jafar Hasan";
+		String temp=name.toLowerCase();
+		int n=temp.length();
+		int[] arr=new int[26];
+		Set<Character> set=new HashSet<>();
+		for(char ch:temp.toCharArray()){
+		    if(ch==' ')continue;
+		    arr[ch-'a']++;
+		    set.add(ch);
+		}
+		for(char ch:set){
+		    if(Character.isLetter(ch) && arr[ch-'a']>1){
+		        System.out.println("Duplicate Character="+ch);
+		    }
+		}
+	}
+}*/
+
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		//System.out.println("Hello World");
+		String name="Jafar Hasan";
+		String temp=name.toLowerCase();
+		int n=temp.length();
+		int[] arr=new int[26];
+// 		Set<Character> set=new HashSet<>();
+		for(char ch:temp.toCharArray()){
+		    if(ch==' ')continue;
+		    arr[ch-'a']++;
+		  //  set.add(ch);
+		}
+		for(char ch:temp.toCharArray()){
+		    if(Character.isLetter(ch) && arr[ch-'a']>1){
+		        System.out.println("Duplicate Character="+ch);
+		        arr[ch-'a']=-1;
+		    }
+		}
+	}
+}
+
+Company______________________________________________________Mount Blue Bangalore
+
+You have received an encrypted message from space. Your task is to decrypt the message with the following simple rules:
+
+Message string will consist of capital letters, numbers, and brackets only. When there's a block of code inside the brackets, such as [10AB], it means you need to repeat the letters AB for 10 times. Message can be embedded in multiple layers of blocks. Final decrypted message will only consist of capital letters. Create a function that takes encrypted message str and returns the decrypted message.
+
+Examples spaceMessage("ABCD") ➞ "ABCD"
+
+spaceMessage("AB[3CD]") ➞ "ABCDCDCD" // "AB" = "AB" // "[3CD]" = "CDCDCD"
+
+spaceMessage("IF[2E]LG[5O]D") ➞ "IFEELGOOOOOD"
+
+Test.md
+Test Case 0
+Input
+
+ABCD
+Output
+
+ABCD
+
+Test Case 1
+Input
+
+AB[3CD]
+Output
+
+ABCDCDCD
+Test Case 2
+Input
+
+AB[2[3CD]]
+
+Output
+
+ABCDCDCDCDCDCD
+Test Case 3
+Input
+
+IF[2E]LG[5O]D
+Output
+
+IFEELGOOOOOD
+
+
+question 2
+Given an array of seats, return the maximum number of new people which can be seated, as long as there is at least a gap of 2 seats between people.
+
+Empty seats are given as 0. Occupied seats are given as 1. Don't move any seats which are already occupied, even if they are less than 2 seats apart. Consider only the gaps between new seats and existing seats.
+
+Examples
+maximumSeating([0, 0, 0, 1, 0, 0, 1, 0, 0, 0]) ➞ 2
+
+// [1, 0, 0, 1, 0, 0, 1, 0, 0, 1]
+
+maximumSeating([0, 0, 0, 0]) ➞ 2
+
+// [1, 0, 0, 1]
+
+maximumSeating([1, 0, 0, 0, 0, 1]) ➞ 0
+
+// There is no way to have a gap of at least 2 chairs when adding someone else.
+
+Notes
+
+Notice how there may be several possibilities for assigning seats to people, but these cases won't affect the results. All seats will be valid.
+
+input
+The input is an array with values 1 or 0.
+
+Ouput
+The output is an integer (number)
+
+link-https://gist.github.com/NisarCoderHive/a71b1332b4c64d03f6fb4f4f65c6f8a7
+LINK-https://gist.github.com/NisarCoderHive/a10a5f0cd1d962d4862e6a27317186c1
+
+
+Company________________________________________________________________MountBlue Bangolre (15k-4LPA CTC)
+July 2025 interview experience 
+
+1 coding problem from hacker rank named Competitive gaming 
+
+Difference between array and arraylist 
+Hashmap vs treemap
+Abstract class vs interface 
+
+2nd conding problem 
+
+Decode rhe message Stack based
+
+
+Nov 2025 interview experience 
+
+Printing pattern (star and number  i don't remember exact pattern)
+
+Count substring containing all the vowels 
+
+Print substring containing alll the vowels
+And cross questions
+
+April 2026 Interview Experience
+2 DSA problems
+
+Sitting arrangements (Greedy)
+
+Decode message/String 
+Without using stack

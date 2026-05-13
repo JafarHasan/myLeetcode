@@ -1,0 +1,61 @@
+Interview Insights from Placed Students (Opkey)
+
+Based on feedback from placed students, the recruitment process at Opkey typically includes two technical interview rounds.
+
+🔍 What to Prepare
+🧪 Manual Testing
+
+Expect questions starting from basics to real-world scenarios, including:
+
+SDLC & STLC
+
+Test case design techniques
+
+Defect life cycle
+
+Severity vs Priority
+
+Types of testing
+
+Role of a tester in real projects
+
+🤖 Automation Testing
+
+Automation topics are discussed in both interview rounds, such as:
+
+Automation testing principles
+
+Selenium basics
+
+Locator strategies
+
+Synchronization
+
+Framework structure
+
+Importance of automation in regression & continuous testing
+
+☕ Java Fundamentals
+
+Strong focus on Java basics and real-world usage, including:
+
+OOP concepts
+
+Exception handling
+
+Collections
+
+How Java is used in automation frameworks
+
+🎯 Interview Style
+
+Technical and scenario-based
+
+Focus on practical problem-solving
+
+Tests both conceptual clarity and hands-on understanding
+
+✅ Final Advice
+
+Prepare concepts + real project examples.
+Be clear in explaining why and how things are done in testing and automation.
